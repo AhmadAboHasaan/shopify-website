@@ -1,0 +1,249 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 15px 5px 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        "head head head head"
+        "main main main main";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 75px 1fr;
+}
+
+header {
+    grid-area: head;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    gap: 7.5vw;
+    z-index: 250;
+    background-color: #f4f4f4;
+    border-bottom: 1.5px solid silver;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+
+header h1 {
+    margin: 0;
+    width: 15vw;
+    font-size: 1.95vw;
+}
+
+header>div {
+    display: flex;
+    align-items: center;
+}
+
+#sort {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#sort-section {
+    margin-left: 0;
+    width: 15vw;
+}
+
+#search-section {
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#search-input {
+    box-sizing: border-box;
+    width: 85%;
+    padding: 10px;
+    font-size: 17.5px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+#menu-toggle {
+    margin-right: 5vw;
+    display: block;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+nav {
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    width: 125px;
+    box-sizing: border-box;
+    position: fixed;
+    padding: 7.5px;
+    top: 75px;
+    right: 0;
+    background: #f4f4f4;
+    z-index: 200;
+    overflow-y: auto;
+}
+
+nav.active {
+    transform: translateX(0);
+}
+
+nav p {
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+nav #filter-section {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    width: 95%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+}
+
+main {
+    grid-area: main;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#product-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    justify-items: center;
+    gap: 20px 5px;
+}
+
+.product-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 85%;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 17.5px -12.5px rgba(0, 0, 0, 0.15);
+    position: relative; 
+    overflow: hidden;
+}
+
+.product-item img {
+    position: relative;
+    width: 95%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+    display: block;
+    z-index: 3;
+}
+
+.product-item:hover img,.hover-overlay:hover {
+
+    transform: scale(1.05);
+    opacity: 25%;
+    transition: 0.75s;
+    cursor: pointer;
+
+}
+
+.product-item .hover-overlay {
+    position: absolute;
+    width: 100px;
+    height: 125px;
+    top: 30%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    font-weight: 900;
+    font-family: cursive;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: black;
+    z-index: 1;
+}
+
+.product-item:hover .hover-overlay {
+    opacity: 1; 
+}
+
+.product-item a{
+    text-decoration: none;
+}
+
+.product-item a:hover{
+    text-decoration:underline;
+    
+}
+
+.product-item h3 {
+    margin: 10px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.product-item p {
+    font-size: 0.95em;
+    margin: 5px 0;
+    color: #666;
+}
+
+@media (max-width: 800px) {
+    header {
+        padding: 10px;
+    }
+
+    #search-section,
+    #sort-section {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #search-input,
+    #sort {
+        width: 100%;
+    }
+
+}
